@@ -56,6 +56,7 @@ class MainActivity : AppCompatActivity() {
         recycler.layoutManager = layoutManager
         recycler.adapter = adapter
 
+
 //        点击item
 //        adapter.setOnItemClickListener( object : RecycleAdapter.OnItemClickListener<User>{
 //            override fun onItemClick(adapter: RecycleAdapter<User>?, v: View?, position: Int) {

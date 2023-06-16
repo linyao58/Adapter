@@ -1,5 +1,7 @@
 package com.example.myadapter
 
+import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -20,6 +22,7 @@ class MainActivity : AppCompatActivity() {
 
     private val fruitList = ArrayList<User>()
 
+
     private val adapter: RecycleAdapter<User> = object : RecycleAdapter<User>(){
         override fun getLayoutId(position: Int): Int {
             return R.layout.fruit_item
@@ -34,7 +37,7 @@ class MainActivity : AppCompatActivity() {
 
             bind.root.setOnClickListener {
 
-                Toast.makeText(this@MainActivity, data.name, Toast.LENGTH_SHORT).show()
+                startActivity<MainActivity2>(this@MainActivity)
 
             }
 
@@ -93,6 +96,11 @@ class MainActivity : AppCompatActivity() {
             fruitList.add(User("ggggg", "24"))
 
         }
+    }
+
+    inline fun <reified T> startActivity(context: Context){
+        val intent = Intent(context, T::class.java)
+        context.startActivity(intent)
     }
 
 }

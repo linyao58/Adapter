@@ -52,4 +52,6 @@ dependencies {
 
     implementation 'com.google.android.material:material:1.0.0'
 
+    implementation 'com.github.linyao58:PermissionX:70a88e6a1b'
+
 }

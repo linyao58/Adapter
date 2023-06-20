@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.core.app.ActivityCompat
 import com.permissionx.linyaodev.PermissionX
+import com.tencent.bugly.crashreport.CrashReport
 import kotlinx.android.synthetic.main.activity_main2.*
 import java.io.IOException
 import java.lang.Exception
@@ -87,7 +88,8 @@ class MainActivity2 : AppCompatActivity() {
         }
 
         but.setOnClickListener {
-            getLocation()
+//            getLocation()
+            CrashReport.testJavaCrash()
         }
 
     }

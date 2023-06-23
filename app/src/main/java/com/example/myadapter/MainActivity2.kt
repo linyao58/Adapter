@@ -9,6 +9,10 @@ import android.os.Bundle
 import android.util.Log
 import androidx.core.app.ActivityCompat
 import com.permissionx.linyaodev.PermissionX
+import com.pgyersdk.activity.FeedbackActivity
+import com.pgyersdk.crash.PgyCrashManager
+import com.pgyersdk.feedback.PgyFeedback
+import com.pgyersdk.feedback.PgyFeedbackShakeManager
 import com.tencent.bugly.crashreport.CrashReport
 import kotlinx.android.synthetic.main.activity_main2.*
 import java.io.IOException
@@ -81,16 +85,46 @@ class MainActivity2 : AppCompatActivity() {
         Manifest.permission.INTERNET,
         Manifest.permission.ACCESS_COARSE_LOCATION,
         Manifest.permission.ACCESS_FINE_LOCATION,
-        Manifest.permission.CHANGE_WIFI_STATE){allGranted, deniedList ->
+        Manifest.permission.CHANGE_WIFI_STATE,
+        Manifest.permission.WRITE_EXTERNAL_STORAGE){allGranted, deniedList ->
             if (allGranted){
                 getLocation()
             }
         }
 
         but.setOnClickListener {
-//            getLocation()
-            CrashReport.testJavaCrash()
+            getLocation()
+//            CrashReport.testJavaCrash()
+//            showDialog()
         }
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        // 自定义摇一摇的灵敏度，默认为950，数值越小灵敏度越高。
+        PgyFeedbackShakeManager.setShakingThreshold(1000)
+
+//        以对话框的形式弹出，对话框只支持竖屏
+        PgyFeedbackShakeManager.register(this)
+
+        FeedbackActivity.setBarImmersive(true)
+        PgyFeedbackShakeManager.register(this, false)
+
+    }
+
+    override fun onPause() {
+        super.onPause()
+
+        PgyCrashManager.unregister()
+
+    }
+
+    fun showDialog(){
+
+        PgyFeedback.getInstance().showDialog(this)
+        PgyFeedback.getInstance().showActivity(this)
 
     }
 

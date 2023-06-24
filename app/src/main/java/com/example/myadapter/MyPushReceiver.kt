@@ -66,8 +66,8 @@ open class MyPushReceiver: BroadcastReceiver() {
         val contentIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT)
 
         val mBuilder = NotificationCompat.Builder(context, "chat")
-            .setSmallIcon(R.drawable.r_c)
-            .setLargeIcon(BitmapFactory.decodeResource(context.resources, R.drawable.r_c))
+            .setSmallIcon(R.mipmap.ic_launcher)
+            .setLargeIcon(BitmapFactory.decodeResource(context.resources, R.mipmap.ic_launcher_foreground))
             .setContentTitle("今天学习")
             .setContentText(message)
             .setAutoCancel(true)

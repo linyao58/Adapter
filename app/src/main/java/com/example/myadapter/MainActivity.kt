@@ -24,6 +24,7 @@ import com.example.myadapter.databinding.FruitItemBinding
 import com.permissionx.linyaodev.PermissionX
 import com.pgyersdk.update.PgyUpdateManager
 import com.pgyersdk.update.UpdateManagerListener
+import com.umeng.message.PushAgent
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -58,6 +59,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        PushAgent.getInstance(this).onAppStart()
 
         initFruit()
         adapter.getDataList().clear()

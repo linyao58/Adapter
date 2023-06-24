@@ -4,6 +4,8 @@ buildscript {
     repositories {
         google()
         jcenter()
+        mavenCentral()
+        maven { url 'https://dl.bintray.com/umsdk/release' }
     }
     dependencies {
         classpath "com.android.tools.build:gradle:4.0.1"
@@ -18,8 +20,10 @@ allprojects {
     repositories {
         google()
         jcenter()
+        mavenCentral()
         maven { url "https://jitpack.io" }
         maven { url "https://raw.githubusercontent.com/Pgyer/mvn_repo_pgyer/master" }
+        maven { url 'https://dl.bintray.com/umsdk/release' }
     }
 }
 
